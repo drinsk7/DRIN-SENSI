@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080711">
+  <title>DRIN SENSI | Gerador de Sensibilidade</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <div class="background-glow"></div>
+
+  <!-- ACESSO PRINCIPAL -->
+  <section id="loginScreen" class="screen">
+    <div class="login-card">
+      <div class="logo">DRIN<span>SENSI</span></div>
+      <div class="tag">SENSIBILIDADE • PRECISÃO • PERSONALIZAÇÃO</div>
+
+      <div class="lock-icon">🔐</div>
+      <h1>Acesso ao gerador</h1>
+      <p>Digite seu código de acesso para entrar no painel.</p>
+
+      <form id="loginForm">
+        <input
+          id="accessCode"
+          type="password"
+          placeholder="Digite seu código"
+          autocomplete="off"
+          required
+        >
+        <button class="primary-btn" type="submit">
+          DESBLOQUEAR PAINEL
+        </button>
+      </form>
+
+      <p id="loginMessage" class="message" role="status"></p>
+      <div class="small-note">DRIN SENSI © 2026</div>
+    </div>
+  </section>
+
+  <!-- PAINEL PRINCIPAL -->
+  <main id="app" class="hidden">
+    <header class="topbar">
+      <a href="#" class="logo">DRIN<span>SENSI</span></a>
+      <div class="status"><span></span> GERADOR ONLINE</div>
+    </header>
+
+    <section class="hero">
+      <div class="tag">SEU ESTILO. SUA PRECISÃO.</div>
+      <h1>GERADOR <span>DRIN SENSI</span></h1>
+      <p>Personalize suas configurações e encontre os valores
+        que funcionam melhor no seu aparelho.</p>
+    </section>
+
+    <section class="panel">
+      <div class="section-heading">
+        <div>
+          <div class="tag">01 / PERSONALIZAÇÃO</div>
+          <h2>Configure seu aparelho</h2>
+        </div>
+        <span class="pill">NORMAL</span>
+      </div>
+
+      <label for="brand">Marca do celular</label>
+      <select id="brand">
+        <option value="xiaomi">Xiaomi / Redmi / POCO</option>
+        <option value="samsung">Samsung</option>
+        <option value="oppo">OPPO</option>
+        <option value="iphone">iPhone / iOS</option>
+        <option value="motorola">Motorola</option>
+        <option value="realme">Realme</option>
+        <option value="infinix">Infinix</option>
+        <option value="tecno">Tecno</option>
+        <option value="asus">ASUS</option>
+        <option value="outro">Outra marca</option>
+      </select>
+
+      <label for="device">Modelo do celular</label>
+      <input id="device" type="text"
+        placeholder="Ex.: Redmi Note 13, Galaxy A15, iPhone 13">
+
+      <label for="playStyle">Estilo de jogo</label>
+      <select id="playStyle">
+        <option value="capa">Subir capa</option>
+        <option value="equilibrado">Equilibrado</option>
+        <option value="precisao">Precisão e controle</option>
+        <option value="rush">Rush / curta distância</option>
+      </select>
+
+      <label for="screenFeel">Resposta da sensibilidade</label>
+      <select id="screenFeel">
+        <option value="normal">Normal</option>
+        <option value="rapida">Rápida</option>
+        <option value="suave">Suave</option>
+      </select>
+
+      <div class="range-heading">
+        <label for="buttonSize">Tamanho do botão de tiro</label>
+        <strong id="buttonValue">48%</strong>
+      </div>
+      <input id="buttonSize" type="range" min="30" max="100" value="48">
+
+      <div class="range-heading">
+        <label for="dpi">DPI de referência</label>
+        <strong id="dpiValue">420</strong>
+      </div>
+      <input id="dpi" type="range" min="300" max="700" step="10" value="420">
+      <p class="hint">DPI é apenas uma referência. Não alteramos
+        as configurações do seu aparelho automaticamente.</p>
+
+      <button id="generateBtn" class="primary-btn" type="button">
+        ✦ GERAR MINHA SENSI
+      </button>
+    </section>
+
+    <!-- RESULTADOS -->
+    <section id="results" class="panel hidden">
+      <div class="section-heading">
+        <div>
+          <div class="tag">02 / SEU RESULTADO</div>
+          <h2>Configuração gerada</h2>
+        </div>
+        <span class="pill">PERSONALIZADA</span>
+      </div>
+
+      <p id="resultDescription" class="hint"></p>
+
+      <div id="sensiGrid" class="sensi-grid"></div>
+
+      <div class="result-extra">
+        <div>
+          <span>Botão de tiro</span>
+          <strong id="resultButton">48%</strong>
+        </div>
+        <div>
+          <span>DPI de referência</span>
+          <strong id="resultDpi">420</strong>
+        </div>
+      </div>
+
+      <button id="copyBtn" class="primary-btn" type="button">
+        COPIAR MINHA SENSI
+      </button>
+      <p id="copyMessage" class="message" role="status"></p>
+    </section>
+
+    <!-- PAINEL VIP -->
+    <section class="vip-panel">
+      <div class="vip-icon">♛</div>
+      <div class="tag">03 / ÁREA EXCLUSIVA</div>
+      <h2>DRIN <span>VIP</span></h2>
+      <p>Desbloqueie presets extras e configurações
+        adicionais para experimentar.</p>
+
+      <form id="vipForm">
+        <input id="vipCode" type="password"
+          placeholder="Código de acesso VIP"
+          autocomplete="off" required>
+        <button type="submit" class="vip-btn">
+          DESBLOQUEAR VIP
+        </button>
+      </form>
+
+      <p id="vipMessage" class="message" role="status"></p>
+
+      <div id="vipContent" class="hidden">
+        <div class="vip-unlocked">✦ ACESSO VIP LIBERADO</div>
+        <label for="vipPreset">Preset VIP</label>
+        <select id="vipPreset">
+          <option value="agressiva">VIP Capa Rápida</option>
+          <option value="controle">VIP Controle Fino</option>
+          <option value="rush">VIP Rush</option>
+        </select>
+        <button id="vipGenerateBtn" class="vip-btn" type="button">
+          GERAR SENSI VIP
+        </button>
+        <p class="hint">Os presets VIP são sugestões experimentais,
+          não garantem resultados específicos no jogo.</p>
+      </div>
+    </section>
+
+    <footer>
+      <div class="logo">DRIN<span>SENSI</span></div>
+      <p>Projeto independente para personalização de configurações.</p>
+      <p>Não afiliado oficialmente ao Free Fire.</p>
+    </footer>
+  </main>
+
+</body>
+</html>
